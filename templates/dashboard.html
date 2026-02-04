@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Churn Prediction Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>📊 Customer Churn Dashboard</h1>
+
+    <div class="result-box">
+        <h2>Prediction Result</h2>
+        <p><strong>Status:</strong> {{ result.prediction }}</p>
+        <p><strong>Churn Probability:</strong> {{ result.churn_probability }}</p>
+        <p class="recommendation"><strong>Recommendation:</strong> {{ result.recommendation }}</p>
+    </div>
+
+    <div class="charts">
+        <canvas id="riskChart"></canvas>
+        <canvas id="probChart"></canvas>
+    </div>
+
+    <a href="/" class="back-btn">← Predict Another Customer</a>
+</div>
+
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+
+</body>
+</html>

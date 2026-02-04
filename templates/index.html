@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Churn Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>📉 Customer Churn Prediction System</h1>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label>Tenure (Months)</label>
+            <input type="number" name="tenure" required>
+        </div>
+
+        <div class="form-group">
+            <label>Monthly Charges</label>
+            <input type="number" step="0.01" name="monthlycharges" required>
+        </div>
+
+        <div class="form-group">
+            <label>Total Charges</label>
+            <input type="number" step="0.01" name="totalcharges" required>
+        </div>
+
+        <div class="form-group">
+            <label>Contract Type</label>
+            <select name="contract">
+                <option value="month-to-month">Month-to-Month</option>
+                <option value="one year">One Year</option>
+                <option value="two year">Two Year</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Internet Service</label>
+            <select name="internetservice">
+                <option value="fiber optic">Fiber Optic</option>
+                <option value="dsl">DSL</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+
+        <button type="submit">Predict Churn</button>
+    </form>
+</div>
+
+</body>
+</html>
