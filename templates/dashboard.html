@@ -1,32 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Churn Prediction Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Churn Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>📊 Customer Churn Dashboard</h1>
+<div class="dashboard">
 
-    <div class="result-box">
-        <h2>Prediction Result</h2>
-        <p><strong>Status:</strong> {{ result.prediction }}</p>
-        <p><strong>Churn Probability:</strong> {{ result.churn_probability }}</p>
-        <p class="recommendation"><strong>Recommendation:</strong> {{ result.recommendation }}</p>
+    <img src="/static/images/churn_cover.png" class="cover">
+
+    <div class="metrics">
+        <div class="box">
+            <h3>Churn Prediction</h3>
+            <p>{{ churn }}</p>
+        </div>
+
+        <div class="box">
+            <h3>Churn Probability</h3>
+            <p>{{ probability }}%</p>
+        </div>
+
+        <div class="box {{ 'danger' if risk=='HIGH RISK' else 'safe' }}">
+            <h3>Risk Level</h3>
+            <p>{{ risk }}</p>
+        </div>
     </div>
 
-    <div class="charts">
-        <canvas id="riskChart"></canvas>
-        <canvas id="probChart"></canvas>
+    <div class="warning">
+        {% if risk == "HIGH RISK" %}
+        ⚠ Early Warning: Customer likely to churn. Immediate action required.
+        {% else %}
+        ✅ Customer is stable.
+        {% endif %}
     </div>
 
-    <a href="/" class="back-btn">← Predict Another Customer</a>
 </div>
-
-<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
 
 </body>
 </html>
