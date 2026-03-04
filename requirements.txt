@@ -7,4 +7,5 @@ plotly
 xgboost
 shap==0.44.1
 matplotlib
-
+flask
+shap
